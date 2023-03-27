@@ -14,9 +14,11 @@ public class CardSpawner : MonoBehaviour
         _cardData = new CardChoiceInit();
     }
 
-    public void CardSpawn(int code)
+    public void CardSpawn(int code) //카드 생성 코드
     {
         GameObject newCard = Instantiate(CardPrefab);
         newCard.GetComponent<CardInit>().Init(_cardData.ChoiceDic[code * 2], _cardData.ChoiceDic[code * 2 + 1]);
+        //카드 yes 값은 홀수 no값은 짝수 이다
+        //2개가 합해서 1카드에 들어감
     }
 }

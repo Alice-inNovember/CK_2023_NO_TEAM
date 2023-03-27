@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _02_Scripts
 {
-	public class CsvReader
+	public class CsvReader // CSV 리더 리소스 폴더에서 찾아 딕셔너리로 반환
 	{
 		private const string SplitRe = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
 		private const string LineSplitRe = @"\r\n|\n\r|\n|\r";

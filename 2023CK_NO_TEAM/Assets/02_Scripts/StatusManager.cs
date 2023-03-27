@@ -20,7 +20,7 @@ namespace _02_Scripts
                 _sliderB.value = ((float)_statusData.StatusB / 100);
         }
 
-        public void add_statusA(int value)
+        public void add_statusA(int value) //스텟 증가 및 슬라이더 조정
         {
             int status;
 
@@ -28,7 +28,7 @@ namespace _02_Scripts
             status += value;
             _statusData.StatusA = status;
             _sliderA.value = ((float)status / 100);
-            switch (status)
+            switch (status) //해당하는 수치에 해당시 게임오버
             {
                 case >= 100:
                     break;
@@ -37,7 +37,7 @@ namespace _02_Scripts
             }
         }
         
-        public void add_statusB(int value)
+        public void add_statusB(int value) //스텟 증가 및 슬라이더 조정
         {
             int status;
 
@@ -45,7 +45,7 @@ namespace _02_Scripts
             status += value;
             _statusData.StatusB = status;
             _sliderB.value = ((float)status / 100);
-            switch (status)
+            switch (status) //해당하는 수치에 해당시 게임오버
             {
                 case >= 100:
                     break;

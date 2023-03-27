@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _02_Scripts
 {
-    public class CardChoice
+    public class CardChoice // 카드 하나에 대한 정보
     {
         public int Code;
         public string Question;
@@ -12,7 +12,7 @@ namespace _02_Scripts
         public int StatB;
         public int Turn;
 
-        public void Show()
+        public void Show() // 디버그용 코드
         {
             Debug.Log("Card Code : " + this.Code);
             Debug.Log("Question  : " + this.Question);
@@ -22,9 +22,9 @@ namespace _02_Scripts
         }
     }
     
-    public class CardChoiceInit
+    public class CardChoiceInit // csv파일에서 정보를 읽어서 딕셔너리화 시키는 함수, <싱글톤> 정보가 필요할시 할당받아 사용
     {
-        public Dictionary<int, CardChoice> ChoiceDic;
+        public Dictionary<int, CardChoice> ChoiceDic; // 카드 정보가 담겨있는 딕셔너리
         private static CardChoiceInit _instance;
         private static int _statusA;
         private static int _statusB;
@@ -49,6 +49,7 @@ namespace _02_Scripts
         private void Init()
         {
             var cardDictionary = CsvReader.Read("Card_Choice");
+            //csv파일 파서
             for (var i = 0; i < cardDictionary.Count; i++)
             {
                 var newCard = new CardChoice
