@@ -20,8 +20,7 @@ namespace _02_Scripts
 
 	    public void RunCardQue()
 	    {
-		    int i = 0;
-		    while (i < _cardData.ChoiceDic.Count)
+		    for (int i = 0; i < _cardData.ChoiceDic.Count; i++)
 		    {
 			    switch (_cardQue[i])
 			    {
@@ -33,7 +32,6 @@ namespace _02_Scripts
 					    RunChoice(i);
 					    break;
 			    }
-			    i++;
 		    }
 	    }
 
