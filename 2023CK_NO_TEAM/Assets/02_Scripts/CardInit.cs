@@ -22,13 +22,13 @@ namespace _02_Scripts
 
         public void YesCardAction()
         {
-            Debug.Log("OK Yes!");
-            _gamemanager.RunChoice(YesCardCode);
+            Debug.Log("YesCardAction : " + YesCardCode);
+            _gamemanager.AddCardQue(YesCardCode);
         }
         public void NoCardAction()
         {
-            Debug.Log("OK No!");
-            _gamemanager.RunChoice(NoCardCode);
+            Debug.Log("NoCardAction : " + NoCardCode);
+            _gamemanager.AddCardQue(NoCardCode);
         }
         public void Init()
         {
