@@ -1,24 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using _02_Scripts;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class CardSpawner : MonoBehaviour
+// DOTWEEN 이동함수
+
+namespace _02_Scripts
 {
-    public GameObject CardPrefab;
-    private CardChoiceInit _cardData;
-
-    private void Start()
+    public class CardSpawner : MonoBehaviour
     {
-        _cardData = new CardChoiceInit();
-    }
+        public GameObject cardPrefab;
+        private CardChoiceInit _cardData;
 
-    public void CardSpawn(int code) //카드 생성 코드
-    {
-        GameObject newCard = Instantiate(CardPrefab);
-        newCard.GetComponent<CardInit>().Init(_cardData.ChoiceDic[code * 2], _cardData.ChoiceDic[code * 2 + 1]);
-        //카드 yes 값은 홀수 no값은 짝수 이다
-        //2개가 합해서 1카드에 들어감
+        private void Start()
+        {
+            _cardData = new CardChoiceInit();
+        }
+
+        public void CardSpawn(int code) //카드 생성 코드
+        {
+            GameObject newCard = Instantiate(cardPrefab);
+            newCard.GetComponent<CardAction>().Init(_cardData.ChoiceDic[code * 2], _cardData.ChoiceDic[code * 2 + 1]);
+            //카드 yes 값은 홀수 no값은 짝수 이다
+            //2개가 합해서 1카드에 들어감
+        
+            newCard.transform.DOMove(new Vector3(0, 10f, 0), 1.75f, false).OnComplete(()=>{
+                newCard.transform.DORotate(new Vector3(0, 0, 0), 0.45f);
+            });
+            //카드 생성시 에니메이션
+        }
     }
 }
