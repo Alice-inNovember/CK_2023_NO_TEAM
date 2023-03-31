@@ -11,6 +11,7 @@ namespace _02_Scripts
         public int StatA;
         public int StatB;
         public int Turn;
+        public string Img;
 
         public void Show() // 디버그용 코드
         {
@@ -58,8 +59,10 @@ namespace _02_Scripts
                     Question = cardDictionary[i]["QUESTION"].ToString(),
                     StatA = int.Parse(cardDictionary[i]["STAT_A"].ToString()),
                     StatB = int.Parse(cardDictionary[i]["STAT_B"].ToString()),
-                    Turn = int.Parse(cardDictionary[i]["TURN"].ToString())
+                    Turn = int.Parse(cardDictionary[i]["TURN"].ToString()),
+                    Img = cardDictionary[i]["IMAGE"].ToString()
                 };
+                newCard.Question = newCard.Question.Replace(" @ ", "\n");
                 ChoiceDic.Add(i, newCard);
             }
         }

@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 
 namespace _02_Scripts
@@ -8,6 +10,7 @@ namespace _02_Scripts
     public class CardAction : MonoBehaviour
     {
         public GameObject text;
+        public GameObject icon;
         private GameManager _gm;
         private int _yesCardCode;
         private int _noCardCode;
@@ -42,7 +45,8 @@ namespace _02_Scripts
         {
             _gm = GameObject.Find("GameManager").GetComponent<GameManager>();
             text.GetComponent<TextMeshProUGUI>().text = cardYes.Question;
-            _yesCardCode = cardYes.Code;
+            icon.GetComponent<Image>().sprite = Resources.Load<Sprite>(cardYes.Img);
+                _yesCardCode = cardYes.Code;
             _noCardCode = cardNo.Code;
         }
     }
