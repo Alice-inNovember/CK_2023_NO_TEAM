@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace _02_Scripts
 {
@@ -18,6 +19,8 @@ namespace _02_Scripts
         {
             _sliderA = GameObject.Find("StatusA").GetComponent<Slider>();
             _sliderB = GameObject.Find("StatusB").GetComponent<Slider>();
+            _statusData.StatusA = 50;
+            _statusData.StatusB = 50;
             if (_sliderA != null)
                 _sliderA.value = ((float)_statusData.StatusA / 100);
             if (_sliderB != null)
@@ -34,8 +37,10 @@ namespace _02_Scripts
             switch (status) //해당하는 수치에 해당시 게임오버
             {
                 case >= 100:
+                    SceneManager.LoadScene("BadEnd");
                     break;
                 case <= 0:
+                    SceneManager.LoadScene("BadEnd");
                     break;
             }
         }
@@ -51,8 +56,10 @@ namespace _02_Scripts
             switch (status) //해당하는 수치에 해당시 게임오버
             {
                 case >= 100:
+                    SceneManager.LoadScene("BadEnd");
                     break;
                 case <= 0:
+                    SceneManager.LoadScene("BadEnd");
                     break;
             }
         }

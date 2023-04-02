@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01_Scenes/GamePlay.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/01_Scenes/GoodEnd.unity
+    guid: 4bfa202dd6f00834cbaffb82db85ae35
+  - enabled: 1
+    path: Assets/01_Scenes/BadEnd.unity
+    guid: cba9c1dd8b6f9a444adf0f369637908f
   m_configObjects: {}

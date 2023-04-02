@@ -26,14 +26,14 @@ namespace _02_Scripts
         {
 	        _statusManager = this.GetComponent<StatusManager>();
 	        _cardData = new CardChoiceInit();
-	        _cardQue = Enumerable.Repeat<int>(0, _cardData.ChoiceDic.Count).ToArray<int>(); // 딕셔너리 크기많큼 할당
-	        _cardUsed = Enumerable.Repeat<int>(0, _cardData.ChoiceDic.Count).ToArray<int>(); // 딕셔너리 크기많큼 할당
 	        DontDestroyOnLoad(this.gameObject);
-	        _turnCnt = 0; //턴수 초기화
         }
 
 	    public void Init()
 	    {
+	        _cardQue = Enumerable.Repeat<int>(0, _cardData.ChoiceDic.Count).ToArray<int>(); // 딕셔너리 크기많큼 할당
+	        _cardUsed = Enumerable.Repeat<int>(0, _cardData.ChoiceDic.Count).ToArray<int>(); // 딕셔너리 크기많큼 할당
+	        _turnCnt = 0; //턴수 초기화
 		    _treeObj = GameObject.Find("TreeOBJ");
 		    _treeShade = GameObject.Find("TreeShade");
 		    _nextButton = GameObject.Find("NextButton");
@@ -68,7 +68,7 @@ namespace _02_Scripts
 		    _nextButton.SetActive(false);
 		    switch (_turnCnt)
 		    {
-			    case 7:
+			    case 7://턴 카운트 증가 및 페이드인 페이드 아웃
 				    _turnCnt++;
 				    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 0);
 				    _treeShade.transform.DOMove(new Vector3(0, 0, 0), 0, false);
@@ -83,7 +83,7 @@ namespace _02_Scripts
 				    });
 				    return;
 			    case > 7:
-				    SceneManager.LoadScene("MainMenu");
+				    SceneManager.LoadScene("GoodEnd");
 				    return;
 		    }
 		    code = Random.Range(0, 7);
@@ -92,18 +92,19 @@ namespace _02_Scripts
 			    code = Random.Range(0, 7);
 		    }
 		    _cardUsed[code] = 1;
-		    
-		    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 0);
-		    _treeShade.transform.DOMove(new Vector3(0, 0, 0), 0, false);
-		    _treeShade.GetComponent<SpriteRenderer>().DOFade(1, 1.25f).OnComplete(()=>
-		    {
-			    _treeObj.GetComponent<SpriteRenderer>().sprite = TreeImg[_turnCnt];
-			    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 2f).OnComplete(() =>
+		    {//페이드 인 페이드 아웃 및 카드 스폰
+			    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 0);
+			    _treeShade.transform.DOMove(new Vector3(0, 0, 0), 0, false);
+			    _treeShade.GetComponent<SpriteRenderer>().DOFade(1, 1.25f).OnComplete(()=>
 			    {
-				    _treeShade.transform.DOMove(new Vector3(0, 0, 50), 0, false);
+				    _treeObj.GetComponent<SpriteRenderer>().sprite = TreeImg[_turnCnt];
+				    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 2f).OnComplete(() =>
+				    {
+					    _treeShade.transform.DOMove(new Vector3(0, 0, 50), 0, false);
+				    });
+				    this.GetComponent<CardSpawner>().CardSpawn(code);
 			    });
-			    this.GetComponent<CardSpawner>().CardSpawn(code);
-		    });
+		    }
 		    _turnCnt++;
 	    }
 
