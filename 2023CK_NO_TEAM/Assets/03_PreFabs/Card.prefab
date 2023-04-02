@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 935608801858360721}
   - component: {fileID: 7313420439762439807}
   - component: {fileID: 2210826413774091057}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBE14\uB77C\uBE14\uB77C\uBE14\uB77C"
+  m_text: "\uBE14\uB77C\uBE14\uB77C\uBE14\uB77C\uBE14\uB77C\uBE14\uB77C\uBE14\uB77C\n\uBE14\uB77C\uBE14\uB77C\uBE14\uB77C\n\uBE14\uB77C\uBE14\uB77C\uBE14\uB77C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ac82b63029724874dba2642f959d416f, type: 2}
   m_sharedMaterial: {fileID: 8412346340671323101, guid: ac82b63029724874dba2642f959d416f, type: 2}
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 1019683382814843591}
   - component: {fileID: 6236748764050958690}
   - component: {fileID: 3541411674131433950}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 851545007799880891}
   - component: {fileID: 8075658822423670783}
   - component: {fileID: 919395959712154230}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 9156560877264139707}
   - component: {fileID: 5804720303669316665}
   - component: {fileID: 7084550093899300250}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 6396869816831110500}
   - component: {fileID: 2002892777044144188}
   - component: {fileID: 1963532923302037764}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 5903060259646255497}
   - component: {fileID: 2380400616934892479}
   - component: {fileID: 5040472540956186332}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG_CLOLR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 70
+  m_PixelsPerUnitMultiplier: 49.2
 --- !u!1 &3871358323769747982
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 5462122388650554241}
   - component: {fileID: 893006057835536287}
   - component: {fileID: 1889730712607678895}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 7259375122382515182}
   - component: {fileID: 5251642975792825259}
   - component: {fileID: 7910040710499786782}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +899,7 @@ GameObject:
   - component: {fileID: 2060867432587106911}
   - component: {fileID: 7388870628500689340}
   - component: {fileID: 2211722485903239178}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FrontCV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 7925812977725903107}
   - component: {fileID: 7925812977725903106}
   - component: {fileID: 2090741034666255401}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 7925812979123723863}
   - component: {fileID: 7925812979123723818}
   - component: {fileID: 7925812979123723861}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 4823389040848263920}
   - component: {fileID: 6030061352841455781}
   - component: {fileID: 5740121332929839279}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 3728025808339094409}
   - component: {fileID: 3826527360998097581}
   - component: {fileID: 4336110185424303922}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG_CLOLR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 70
+  m_PixelsPerUnitMultiplier: 49.2
 --- !u!1 &8677038104355211230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1289,7 @@ GameObject:
   - component: {fileID: 3540140863812112328}
   - component: {fileID: 5969455152616611750}
   - component: {fileID: 5446164166516231169}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

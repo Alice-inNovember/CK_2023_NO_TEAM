@@ -1,16 +1,26 @@
 using UnityEngine;
 using System.Linq;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
+
+
+using UnityEngine.UI;
+using Image = UnityEngine.UIElements.Image;
 
 namespace _02_Scripts
 {
     public class GameManager : MonoBehaviour
     {
-	    public int TurnCnt; // 턴수 췌크
+	    public Sprite[] TreeImg;// 턴수 췌크
 	    
 	    private StatusManager _statusManager;
 	    private CardChoiceInit _cardData;
+	    private GameObject _treeObj;
+	    private GameObject _treeShade;
+	    private GameObject _nextButton;
 	    private int[] _cardQue; // 카드 효과 남은 턴
 	    private int[] _cardUsed; // 카드 중복 생성을 막기 위한 변수
+	    private int _turnCnt;
 
 	    private void Start()
         {
@@ -18,8 +28,16 @@ namespace _02_Scripts
 	        _cardData = new CardChoiceInit();
 	        _cardQue = Enumerable.Repeat<int>(0, _cardData.ChoiceDic.Count).ToArray<int>(); // 딕셔너리 크기많큼 할당
 	        _cardUsed = Enumerable.Repeat<int>(0, _cardData.ChoiceDic.Count).ToArray<int>(); // 딕셔너리 크기많큼 할당
-	        TurnCnt = 0; //턴수 초기화
+	        DontDestroyOnLoad(this.gameObject);
+	        _turnCnt = 0; //턴수 초기화
         }
+
+	    public void Init()
+	    {
+		    _treeObj = GameObject.Find("TreeOBJ");
+		    _treeShade = GameObject.Find("TreeShade");
+		    _nextButton = GameObject.Find("NextButton");
+	    }
 
 	    public void RunCardQue() // 카드중 여러 턴 동안 작동하는 값이 있어 _cardQue에 남은 수 많큼 적용할 수 있도록 함
 	    {
@@ -42,19 +60,51 @@ namespace _02_Scripts
 	    {
 		    _cardQue[code] = _cardData.ChoiceDic[code].Turn;
 	    }
-
+	    
 	    public void NextCard()
 	    {
-		    int code;
+		    int code = 0;
 
+		    _nextButton.SetActive(false);
+		    switch (_turnCnt)
+		    {
+			    case 7:
+				    _turnCnt++;
+				    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 0);
+				    _treeShade.transform.DOMove(new Vector3(0, 0, 0), 0, false);
+				    _treeShade.GetComponent<SpriteRenderer>().DOFade(1, 1.25f).OnComplete(() =>
+				    {
+					    _treeObj.GetComponent<SpriteRenderer>().sprite = TreeImg[_turnCnt];
+					    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 2f).OnComplete(() =>
+					    {
+						    _treeShade.transform.DOMove(new Vector3(0, 0, 50), 0, false);
+						    _nextButton.SetActive(true);
+					    });
+				    });
+				    return;
+			    case > 7:
+				    SceneManager.LoadScene("MainMenu");
+				    return;
+		    }
 		    code = Random.Range(0, 7);
 		    while (_cardUsed[code] == 1)
 		    {
 			    code = Random.Range(0, 7);
 		    }
 		    _cardUsed[code] = 1;
-		    this.GetComponent<CardSpawner>().CardSpawn(code);
-		    TurnCnt++;
+		    
+		    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 0);
+		    _treeShade.transform.DOMove(new Vector3(0, 0, 0), 0, false);
+		    _treeShade.GetComponent<SpriteRenderer>().DOFade(1, 1.25f).OnComplete(()=>
+		    {
+			    _treeObj.GetComponent<SpriteRenderer>().sprite = TreeImg[_turnCnt];
+			    _treeShade.GetComponent<SpriteRenderer>().DOFade(0, 2f).OnComplete(() =>
+			    {
+				    _treeShade.transform.DOMove(new Vector3(0, 0, 50), 0, false);
+			    });
+			    this.GetComponent<CardSpawner>().CardSpawn(code);
+		    });
+		    _turnCnt++;
 	    }
 
 	    public void RunChoice(int code) // 카드 코드에 따라 스테이터스 적용
@@ -65,6 +115,7 @@ namespace _02_Scripts
 		    Debug.Log("Run Card Code : " + code);
 		    _statusManager.add_statusA(card.StatA);
 		    _statusManager.add_statusB(card.StatB);
+		    _nextButton.SetActive(true);
 	    }
     }
 }

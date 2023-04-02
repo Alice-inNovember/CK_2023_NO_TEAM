@@ -12,6 +12,10 @@ namespace _02_Scripts
         private void Start()
         {
             _statusData = new StatusData();
+        }
+
+        public void Init()
+        {
             _sliderA = GameObject.Find("StatusA").GetComponent<Slider>();
             _sliderB = GameObject.Find("StatusB").GetComponent<Slider>();
             if (_sliderA != null)
@@ -19,7 +23,6 @@ namespace _02_Scripts
             if (_sliderB != null)
                 _sliderB.value = ((float)_statusData.StatusB / 100);
         }
-
         public void add_statusA(int value) //스텟 증가 및 슬라이더 조정
         {
             int status;

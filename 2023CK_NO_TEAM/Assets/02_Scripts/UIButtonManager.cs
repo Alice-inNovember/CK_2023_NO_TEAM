@@ -10,9 +10,8 @@ public class UIButtonManager : MonoBehaviour
     {
         
     }
-
     public void StartButton()
     {
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("GamePlay");
     }
 }
