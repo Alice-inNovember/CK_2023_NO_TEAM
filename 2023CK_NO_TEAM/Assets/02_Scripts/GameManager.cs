@@ -5,6 +5,8 @@ namespace _02_Scripts
 {
     public class GameManager : MonoBehaviour
     {
+	    public int TurnCnt; // 턴수 췌크
+	    
 	    private StatusManager _statusManager;
 	    private CardChoiceInit _cardData;
 	    private int[] _cardQue; // 카드 효과 남은 턴
@@ -16,6 +18,7 @@ namespace _02_Scripts
 	        _cardData = new CardChoiceInit();
 	        _cardQue = Enumerable.Repeat<int>(0, _cardData.ChoiceDic.Count).ToArray<int>(); // 딕셔너리 크기많큼 할당
 	        _cardUsed = Enumerable.Repeat<int>(0, _cardData.ChoiceDic.Count).ToArray<int>(); // 딕셔너리 크기많큼 할당
+	        TurnCnt = 0; //턴수 초기화
         }
 
 	    public void RunCardQue() // 카드중 여러 턴 동안 작동하는 값이 있어 _cardQue에 남은 수 많큼 적용할 수 있도록 함
@@ -38,7 +41,20 @@ namespace _02_Scripts
 	    public void AddCardQue(int code) // 선택지 설정 후 효과(스테이터스) 적용을 위한 큐 증가
 	    {
 		    _cardQue[code] = _cardData.ChoiceDic[code].Turn;
+	    }
+
+	    public void NextCard()
+	    {
+		    int code;
+
+		    code = Random.Range(0, 7);
+		    while (_cardUsed[code] == 1)
+		    {
+			    code = Random.Range(0, 7);
+		    }
 		    _cardUsed[code] = 1;
+		    this.GetComponent<CardSpawner>().CardSpawn(code);
+		    TurnCnt++;
 	    }
 
 	    public void RunChoice(int code) // 카드 코드에 따라 스테이터스 적용
